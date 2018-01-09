@@ -21,9 +21,6 @@ public class Charity {
 	@Column(nullable = true)
 	private String password;
 	
-	@OneToMany(mappedBy = "charity")
-	private List<items> items;
-
 	@Column(length = 75, nullable = false)
 	private String organizationName;
 
@@ -33,7 +30,7 @@ public class Charity {
 	@Column(nullable = true)
 	private String address;
 	
-		@Column(nullable = true)
+	@Column(nullable = true)
 	private String contactName;
 	
 	@Column(nullable = true)
