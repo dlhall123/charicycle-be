@@ -1,4 +1,4 @@
-package com.lmig.gfc.charicycle.api;
+package com.lmig.gfc.charicycle.apis;
 
 import java.util.List;
 
