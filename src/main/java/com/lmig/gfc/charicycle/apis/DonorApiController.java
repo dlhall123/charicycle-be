@@ -1,5 +1,7 @@
 package com.lmig.gfc.charicycle.apis;
 
+
+import java.util.List;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -11,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
-
+import com.lmig.gfc.charicycle.models.Charity;
 import com.lmig.gfc.charicycle.models.Donor;
 import com.lmig.gfc.charicycle.services.DonorRepository;
 
@@ -46,11 +48,18 @@ public class DonorApiController {
 
 	}
 
+	@CrossOrigin(origins = "http://localhost:4200")
+
 	@DeleteMapping("{id}")
 	public Donor delete(@PathVariable Long id) {
 		Donor donor = donorRepo.findOne(id);
 		donorRepo.delete(id);
 		return donor;
 	}
-
+	
+	@CrossOrigin(origins = "http://localhost:4200")
+	@GetMapping("")
+	public List<Donor> getDonorRepository() {
+		return donorRepo.findAll();
+	}
 }

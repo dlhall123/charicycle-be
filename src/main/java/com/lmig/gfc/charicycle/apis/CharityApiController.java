@@ -1,7 +1,10 @@
 package com.lmig.gfc.charicycle.apis;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -23,12 +26,11 @@ public class CharityApiController {
 		return charityRepository.save(charity);
 	}
 
-	public CharityRepository getCharityRepository() {
-		return charityRepository;
+	@GetMapping("")
+	public List<Charity> getCharityRepository() {
+		return charityRepository.findAll();
 	}
 
-	public void setCharityRepository(CharityRepository charityRepository) {
-		this.charityRepository = charityRepository;
-	}
+	
 
 }
