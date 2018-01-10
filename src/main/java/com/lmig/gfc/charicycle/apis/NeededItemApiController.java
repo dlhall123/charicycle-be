@@ -34,8 +34,10 @@ public class NeededItemApiController {
 	}
 
 	@DeleteMapping("{id}")
-	public void delete(@PathVariable Long id) {
+	public Item delete(@PathVariable Long id) {
+		Item item = itemRepo.findOne(id);
 		itemRepo.delete(id);
+		return item;
 	}
 
 }
