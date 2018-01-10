@@ -1,10 +1,13 @@
 package com.lmig.gfc.charicycle.models;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Charity {
@@ -35,6 +38,9 @@ public class Charity {
 	@Column(nullable = true)
 	private String emailAddress;
 
+	@OneToMany(mappedBy = "charity") // One charity has many Needed Items
+	private List<Item> neededItems;
+
 	public Charity() {
 	};
 
@@ -45,8 +51,6 @@ public class Charity {
 			this.address = address;
 			this.contactName = contactName;
 			this.emailAddress = emailAddress;
-			
-
 	}
 
 	public Long getId() {
@@ -111,6 +115,14 @@ public class Charity {
 
 	public void setEmailAddress(String emailAddress) {
 		this.emailAddress = emailAddress;
+	}
+
+	public List<Item> getNeededItems() {
+		return neededItems;
+	}
+
+	public void setNeededItems(List<Item> neededItems) {
+		this.neededItems = neededItems;
 	}
 
 }
