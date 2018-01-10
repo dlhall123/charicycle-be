@@ -4,6 +4,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 public class Item {
@@ -15,6 +18,10 @@ public class Item {
 	private String category;
 
 	private String description;
+
+	@JsonIgnore
+	@ManyToOne
+	private Charity charity;
 
 	public Item() {
 	}
@@ -46,5 +53,13 @@ public class Item {
 
 	public void setDescription(String description) {
 		this.description = description;
+	}
+
+	public Charity getCharity() {
+		return charity;
+	}
+
+	public void setCharity(Charity charity) {
+		this.charity = charity;
 	}
 }
