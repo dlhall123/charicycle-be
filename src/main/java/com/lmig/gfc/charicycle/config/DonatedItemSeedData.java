@@ -13,7 +13,8 @@ public class DonatedItemSeedData {
 	public DonatedItemSeedData(DonatedItemRepository donatedItemRepo, DonorRepository donorRepo) {
 
 		Donor donor = donorRepo.save(new Donor(null, "Joe", "Smith", null, null, null, null, null, "email@emial.com"));
-		DonatedItem donatedItem = donatedItemRepo.save(new DonatedItem("Test Category", "Test Description"));
+		DonatedItem donatedItem = donatedItemRepo.save(new DonatedItem("Test Category", "Test Description",
+				"https://s3-us-west-2.amazonaws.com/charicycle/Penguins.jpg"));
 		donatedItem.setDonor(donor);
 		donatedItemRepo.save(donatedItem);
 	}

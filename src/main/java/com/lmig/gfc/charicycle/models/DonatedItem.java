@@ -22,9 +22,10 @@ public class DonatedItem {
 	@ManyToOne
 	private Donor donor;
 
-	public DonatedItem(String category, String description) {
+	public DonatedItem(String category, String description, String itemImageUrl) {
 		this.category = category;
 		this.description = description;
+		this.itemImageUrl = itemImageUrl;
 	}
 
 	public DonatedItem() {
