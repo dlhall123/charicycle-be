@@ -1,6 +1,5 @@
 package com.lmig.gfc.charicycle.config;
 
-
 import org.springframework.context.annotation.Configuration;
 import com.lmig.gfc.charicycle.models.Category;
 import com.lmig.gfc.charicycle.services.CategoryRepository;
@@ -13,7 +12,7 @@ import com.lmig.gfc.charicycle.services.DonorRepository;
 @Configuration
 public class SeedData {
 	
-	public SeedData(CategoryRepository categoryRepo) {
+	public SeedData(CategoryRepository categoryRepo, CharityRepository charityRepository, DonorRepository donorRepository ) {
 		categoryRepo.save(new Category("Bedding"));
 		categoryRepo.save(new Category("Books/Tapes/Videos"));
 		categoryRepo.save(new Category("Clothing"));
@@ -24,8 +23,6 @@ public class SeedData {
 		categoryRepo.save(new Category("Sporting Goods"));
 		categoryRepo.save(new Category("Toys"));
 		
-	public SeedData(CharityRepository charityRepository, DonorRepository donorRepository) {
-
 	Charity charity = charityRepository.save(new Charity("Goodwill", "12-3456789",
 	"100 E. Main Street Carmel IN 46032", "John Doe", "johndoe@comcast.net"));
 
