@@ -12,6 +12,7 @@ import javax.persistence.OneToMany;
 @Entity
 public class Charity {
 
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
@@ -43,12 +44,13 @@ public class Charity {
 	public Charity() {
 	};
 
-	public Charity(String organizationName, String taxId, String address, String contactName, String emailAddress) {
-		this.organizationName = organizationName;
-		this.taxId = taxId;
-		this.address = address;
-		this.contactName = contactName;
-		this.emailAddress = emailAddress;
+	public Charity(String organizationName, String taxId, String address,
+			 String contactName, String emailAddress) {
+			this.organizationName = organizationName;
+			this.taxId = taxId;
+			this.address = address;
+			this.contactName = contactName;
+			this.emailAddress = emailAddress;
 	}
 
 	public Long getId() {
