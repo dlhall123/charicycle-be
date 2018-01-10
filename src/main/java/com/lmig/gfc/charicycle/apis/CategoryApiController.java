@@ -1,5 +1,8 @@
 package com.lmig.gfc.charicycle.apis;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -12,45 +15,47 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.lmig.gfc.charicycle.models.Donor;
-import com.lmig.gfc.charicycle.services.DonorRepository;
+import com.lmig.gfc.charicycle.models.Category;
+import com.lmig.gfc.charicycle.services.CategoryRepository;
+
 
 @RestController
-@RequestMapping("/api/donor")
-public class DonorApiController {
-	private DonorRepository donorRepo;
+@RequestMapping("/api/category")
+public class CategoryApiController {
+	private CategoryRepository categoryRepo;
 
-	public DonorApiController(DonorRepository donorRepo) {
-		this.donorRepo = donorRepo;
+	public CategoryApiController(CategoryRepository categoryRepo) {
+		this.categoryRepo = categoryRepo;
 	}
+	
 
 	@CrossOrigin(origins = "http://localhost:4200")
 	@PostMapping("")
 	@ResponseStatus(code = HttpStatus.CREATED)
-	public Donor create(@RequestBody Donor donor) {
-		return donorRepo.save(donor);
+	public Category create(@RequestBody Category category) {
+		return categoryRepo.save(category);
 	}
 
 	@CrossOrigin(origins = "http://localhost:4200")
 	@GetMapping("{id}")
-	public Donor getOne(@PathVariable Long id) {
+	public Category getOne(@PathVariable Long id) {
 
-		return donorRepo.findOne(id);
+		return categoryRepo.findOne(id);
 	}
 
 	@CrossOrigin(origins = "http://localhost:4200")
 	@PutMapping("{id}")
-	public Donor update(@RequestBody Donor donor, @PathVariable Long id) {
-		donor.setId(id);
-		return donorRepo.save(donor);
+	public Category update(@RequestBody Category category, @PathVariable Long id) {
+		category.setId(id);
+		return categoryRepo.save(category);
 
 	}
 
 	@DeleteMapping("{id}")
-	public Donor delete(@PathVariable Long id) {
-		Donor donor = donorRepo.findOne(id);
-		donorRepo.delete(id);
-		return donor;
+	public Category delete(@PathVariable Long id) {
+		Category category = categoryRepo.findOne(id);
+		categoryRepo.delete(id);
+		return category;
 	}
 
 }
