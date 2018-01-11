@@ -1,6 +1,5 @@
 package com.lmig.gfc.charicycle.apis;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.http.HttpStatus;
@@ -18,7 +17,6 @@ import org.springframework.web.bind.annotation.RestController;
 import com.lmig.gfc.charicycle.models.Category;
 import com.lmig.gfc.charicycle.services.CategoryRepository;
 
-
 @RestController
 @RequestMapping("/api/category")
 public class CategoryApiController {
@@ -27,7 +25,13 @@ public class CategoryApiController {
 	public CategoryApiController(CategoryRepository categoryRepo) {
 		this.categoryRepo = categoryRepo;
 	}
-	
+
+	@CrossOrigin(origins = "http://localhost:4200")
+	@GetMapping("")
+	public List<Category> getAll() {
+
+		return categoryRepo.findAll();
+	}
 
 	@CrossOrigin(origins = "http://localhost:4200")
 	@PostMapping("")

@@ -15,7 +15,8 @@ public class Item {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 
-	private String category;
+	@ManyToOne
+	private Category category;
 
 	private String description;
 
@@ -26,7 +27,7 @@ public class Item {
 	public Item() {
 	}
 
-	public Item(String category, String description) {
+	public Item(Category category, String description) {
 		this.category = category;
 		this.description = description;
 	}
@@ -37,14 +38,6 @@ public class Item {
 
 	public void setId(Long id) {
 		this.id = id;
-	}
-
-	public String getCategory() {
-		return category;
-	}
-
-	public void setCategory(String category) {
-		this.category = category;
 	}
 
 	public String getDescription() {
@@ -61,5 +54,13 @@ public class Item {
 
 	public void setCharity(Charity charity) {
 		this.charity = charity;
+	}
+
+	public Category getCategory() {
+		return category;
+	}
+
+	public void setCategory(Category category) {
+		this.category = category;
 	}
 }
