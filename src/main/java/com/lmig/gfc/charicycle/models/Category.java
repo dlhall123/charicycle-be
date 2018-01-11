@@ -19,6 +19,9 @@ public class Category {
 	@OneToMany(mappedBy = "category")
 	private List<Item> items;
 
+	@OneToMany(mappedBy = "category")
+	private List<DonatedItem> donatedItems;
+
 	@Column(length = 75, nullable = false)
 	private String name;
 
