@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.lmig.gfc.charicycle.models.DonatedItem;
 import com.lmig.gfc.charicycle.models.DonatedItemView;
 import com.lmig.gfc.charicycle.services.DonatedItemRepository;
+import com.lmig.gfc.charicycle.services.DonorRepository;
 
 @RestController
 @CrossOrigin(origins = "*")
@@ -23,9 +24,13 @@ import com.lmig.gfc.charicycle.services.DonatedItemRepository;
 public class DonatedItemApiController {
 	@Autowired
 	private DonatedItemRepository donateRepo;
+	@Autowired
+	private DonorRepository donorRepo;
+	
 
-	@PostMapping("")
-	public DonatedItem create(@RequestBody DonatedItem di) {
+	@PostMapping("{id}")
+	public DonatedItem create(@PathVariable Long id, @RequestBody DonatedItem di) {
+		di.setDonor(donorRepo.findOne(id));
 		return donateRepo.save(di);
 	}
 
