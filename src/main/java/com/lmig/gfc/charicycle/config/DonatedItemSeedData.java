@@ -12,10 +12,15 @@ public class DonatedItemSeedData {
 
 	public DonatedItemSeedData(DonatedItemRepository donatedItemRepo, DonorRepository donorRepo) {
 
-		Donor donor = donorRepo.save(new Donor(null, "Joe", "Smith", null, null, null, null, null, "email@emial.com"));
-		DonatedItem donatedItem = donatedItemRepo.save(new DonatedItem("Test Category", "Test Description",
-				"https://s3-us-west-2.amazonaws.com/charicycle/Penguins.jpg"));
+		Donor donor = donorRepo
+				.save(new Donor(null, "Joe", "Smith", null, null, null, null, "555-555-5555", "email@emial.com"));
+		DonatedItem donatedItem = donatedItemRepo.save(
+				new DonatedItem("Animals", "3 Penguins", "https://s3-us-west-2.amazonaws.com/charicycle/Penguins.jpg"));
 		donatedItem.setDonor(donor);
 		donatedItemRepo.save(donatedItem);
+
+		DonatedItem donatedItemTwo = donatedItemRepo.save(new DonatedItem("Furniture", "Comfy Couch", null));
+		donatedItemTwo.setDonor(donor);
+		donatedItemRepo.save(donatedItemTwo);
 	}
 }

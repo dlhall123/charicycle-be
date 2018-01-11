@@ -13,7 +13,7 @@ public class NeededItemSeedData {
 	public NeededItemSeedData(ItemRepository itemRepo, CharityRepository charityRepo) {
 
 		Charity charity = charityRepo.save(new Charity("My charity", null, null, null, null));
-		Item itemOne = itemRepo.save(new Item("Test Category", "Test Description"));
+		Item itemOne = itemRepo.save(new Item("Needed Thing Category", "Needed Thing Description"));
 		itemOne.setCharity(charity);
 		itemRepo.save(itemOne);
 	}

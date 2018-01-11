@@ -8,11 +8,13 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.lmig.gfc.charicycle.models.DonatedItem;
+import com.lmig.gfc.charicycle.models.DonatedItemView;
 import com.lmig.gfc.charicycle.services.DonatedItemRepository;
 
 @RestController
@@ -37,6 +39,22 @@ public class DonatedItemApiController {
 		DonatedItem donatedItem = donateRepo.findOne(id);
 		donateRepo.delete(id);
 		return donatedItem;
+	}
+
+	@GetMapping("{id}")
+	public DonatedItemView getOne(@PathVariable Long id) {
+		DonatedItem donatedItem = donateRepo.findOne(id);
+		if (donatedItem != null) {
+			DonatedItemView donatedItemView = new DonatedItemView(donatedItem);
+			return donatedItemView;
+		}
+		return null;
+	}
+
+	@PutMapping("{id}")
+	public DonatedItem update(@RequestBody DonatedItem donatedItem, @PathVariable Long id) {
+		donatedItem.setId(id);
+		return donateRepo.save(donatedItem);
 	}
 
 }
