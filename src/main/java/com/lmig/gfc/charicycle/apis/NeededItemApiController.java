@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.lmig.gfc.charicycle.models.Item;
+import com.lmig.gfc.charicycle.services.CharityRepository;
 import com.lmig.gfc.charicycle.services.ItemRepository;
 
 @RestController
@@ -22,9 +23,13 @@ public class NeededItemApiController {
 
 	@Autowired
 	private ItemRepository itemRepo;
+	@Autowired
+	private CharityRepository charityRepo;
 
-	@PostMapping("")
-	public Item create(@RequestBody Item neededItem) {
+	@PostMapping("{id}")
+	public Item create(@PathVariable Long id, @RequestBody Item neededItem) {
+		System.out.println(id);
+		neededItem.setCharity(charityRepo.findOne(id));
 		return itemRepo.save(neededItem);
 	}
 
