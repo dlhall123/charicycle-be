@@ -28,7 +28,6 @@ public class NeededItemApiController {
 
 	@PostMapping("{id}")
 	public Item create(@PathVariable Long id, @RequestBody Item neededItem) {
-		System.out.println(id);
 		neededItem.setCharity(charityRepo.findOne(id));
 		return itemRepo.save(neededItem);
 	}
