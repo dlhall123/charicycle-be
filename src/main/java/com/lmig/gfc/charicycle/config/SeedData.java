@@ -3,7 +3,6 @@ package com.lmig.gfc.charicycle.config;
 import org.springframework.context.annotation.Configuration;
 import com.lmig.gfc.charicycle.models.Category;
 import com.lmig.gfc.charicycle.services.CategoryRepository;
-import org.springframework.context.annotation.Configuration;
 import com.lmig.gfc.charicycle.models.Charity;
 import com.lmig.gfc.charicycle.models.Donor;
 import com.lmig.gfc.charicycle.services.CharityRepository;

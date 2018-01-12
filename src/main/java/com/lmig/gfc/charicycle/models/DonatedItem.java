@@ -13,7 +13,8 @@ public class DonatedItem {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
-	private String category;
+	@ManyToOne
+	private Category category;
 	private String description;
 
 	private String itemImageUrl;
@@ -21,11 +22,11 @@ public class DonatedItem {
 	@JsonIgnore
 	@ManyToOne
 	private Donor donor;
+  
+  private Long claimedCharityId;
 
-	private Long claimedCharityId;
-
-	public DonatedItem(String category, String description, String itemImageUrl) {
-		this.category = category;
+	public DonatedItem(Category category, String description, String itemImageUrl) {
+  	this.category = category;
 		this.description = description;
 		this.itemImageUrl = itemImageUrl;
 	}
@@ -39,14 +40,6 @@ public class DonatedItem {
 
 	public void setId(Long id) {
 		this.id = id;
-	}
-
-	public String getCategory() {
-		return category;
-	}
-
-	public void setCategory(String category) {
-		this.category = category;
 	}
 
 	public String getDescription() {
@@ -72,7 +65,14 @@ public class DonatedItem {
 	public void setDonor(Donor donor) {
 		this.donor = donor;
 	}
+  
+	public Category getCategory() {
+		return category;
+	}
 
+	public void setCategory(Category category) {
+		this.category = category;
+    
 	public Long getClaimedCharityId() {
 		return claimedCharityId;
 	}
