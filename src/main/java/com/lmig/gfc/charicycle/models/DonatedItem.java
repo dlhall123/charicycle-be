@@ -22,11 +22,11 @@ public class DonatedItem {
 	@JsonIgnore
 	@ManyToOne
 	private Donor donor;
-  
-  private Long claimedCharityId;
+
+	private Long claimedCharityId;
 
 	public DonatedItem(Category category, String description, String itemImageUrl) {
-  	this.category = category;
+		this.category = category;
 		this.description = description;
 		this.itemImageUrl = itemImageUrl;
 	}
@@ -65,14 +65,15 @@ public class DonatedItem {
 	public void setDonor(Donor donor) {
 		this.donor = donor;
 	}
-  
+
 	public Category getCategory() {
 		return category;
 	}
 
 	public void setCategory(Category category) {
 		this.category = category;
-    
+	}
+
 	public Long getClaimedCharityId() {
 		return claimedCharityId;
 	}

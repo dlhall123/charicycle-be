@@ -12,7 +12,7 @@ public class DonatedItemView {
 		return donatedItem.getId();
 	}
 
-	public String getCategory() {
+	public Category getCategory() {
 		return donatedItem.getCategory();
 	}
 
