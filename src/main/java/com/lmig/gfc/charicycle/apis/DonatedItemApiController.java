@@ -26,7 +26,6 @@ public class DonatedItemApiController {
 	private DonatedItemRepository donateRepo;
 	@Autowired
 	private DonorRepository donorRepo;
-	
 
 	@PostMapping("{id}")
 	public DonatedItem create(@PathVariable Long id, @RequestBody DonatedItem di) {
@@ -59,6 +58,14 @@ public class DonatedItemApiController {
 	@PutMapping("{id}")
 	public DonatedItem update(@RequestBody DonatedItem donatedItem, @PathVariable Long id) {
 		donatedItem.setId(id);
+		return donateRepo.save(donatedItem);
+	}
+
+	@PutMapping("{donorId}/{id}")
+	public DonatedItem updateDonatedItem(@RequestBody DonatedItem donatedItem, @PathVariable Long id,
+			@PathVariable Long donorId) {
+		donatedItem.setId(id);
+		donatedItem.setDonor(donorRepo.findOne(donorId));
 		return donateRepo.save(donatedItem);
 	}
 

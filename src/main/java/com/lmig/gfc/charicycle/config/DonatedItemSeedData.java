@@ -22,5 +22,7 @@ public class DonatedItemSeedData {
 		DonatedItem donatedItemTwo = donatedItemRepo.save(new DonatedItem("Furniture", "Comfy Couch", null));
 		donatedItemTwo.setDonor(donor);
 		donatedItemRepo.save(donatedItemTwo);
+
 	}
+
 }

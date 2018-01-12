@@ -17,4 +17,5 @@ public class NeededItemSeedData {
 		itemOne.setCharity(charity);
 		itemRepo.save(itemOne);
 	}
+
 }

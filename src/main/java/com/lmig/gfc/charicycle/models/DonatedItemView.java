@@ -8,6 +8,10 @@ public class DonatedItemView {
 		this.donatedItem = donateditem;
 	}
 
+	public Long getId() {
+		return donatedItem.getId();
+	}
+
 	public String getCategory() {
 		return donatedItem.getCategory();
 	}
@@ -25,4 +29,7 @@ public class DonatedItemView {
 		return donorView;
 	}
 
+	public Long getClaimedCharityId() {
+		return donatedItem.getClaimedCharityId();
+	}
 }
