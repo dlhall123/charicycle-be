@@ -17,10 +17,16 @@ public class DonatedItemSeedData {
 		Category category = new Category();
 		category.setName("Seed Category");
 		catRepo.save(category);
-		Donor donor = donorRepo.save(new Donor(null, "Joe", "Smith", null, null, null, null, null, "email@emial.com"));
-		DonatedItem donatedItem = donatedItemRepo.save(new DonatedItem(category, "Test Description",
+		Donor donor = donorRepo.save(new Donor(null, "Joe", "Smith", null, null, null, null, 555-555-5555, "email@email.com"));
+		DonatedItem donatedItem = donatedItemRepo.save(new DonatedItem(category, "3 cute Penguins",
 				"https://s3-us-west-2.amazonaws.com/charicycle/Penguins.jpg"));
 		donatedItem.setDonor(donor);
 		donatedItemRepo.save(donatedItem);
+
+		DonatedItem donatedItemTwo = donatedItemRepo.save(new DonatedItem("Furniture", "Comfy Couch", null));
+		donatedItemTwo.setDonor(donor);
+		donatedItemRepo.save(donatedItemTwo);
+
 	}
+
 }

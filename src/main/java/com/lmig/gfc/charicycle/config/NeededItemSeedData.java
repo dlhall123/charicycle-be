@@ -17,8 +17,10 @@ public class NeededItemSeedData {
 		category.setName("Seed Category");
 		catRepo.save(category);
 		Charity charity = charityRepo.save(new Charity("My charity", null, null, null, null));
-		Item itemOne = itemRepo.save(new Item(category, "Test Description"));
+
+		Item itemOne = itemRepo.save(new Item(category, "My charity needs a fridge"));
 		itemOne.setCharity(charity);
 		itemRepo.save(itemOne);
 	}
+
 }
