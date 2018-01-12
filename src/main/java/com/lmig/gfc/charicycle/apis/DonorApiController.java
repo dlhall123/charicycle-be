@@ -14,18 +14,24 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
+
+import com.lmig.gfc.charicycle.models.DonatedItem;
 import com.lmig.gfc.charicycle.models.Donor;
+import com.lmig.gfc.charicycle.services.DonatedItemRepository;
 import com.lmig.gfc.charicycle.services.DonorRepository;
 
 @RestController
 @RequestMapping("/api/donor")
 public class DonorApiController {
 
-	@Autowired
 	private DonorRepository donorRepo;
 
-	public DonorApiController(DonorRepository donorRepo) {
+	private DonatedItemRepository donatedItemRepo;
+	
+
+	public DonorApiController(DonorRepository donorRepo, DonatedItemRepository dir) {
 		this.donorRepo = donorRepo;
+		this.donatedItemRepo = dir;
 	}
 
 	@CrossOrigin(origins = "http://localhost:4200")
@@ -54,6 +60,11 @@ public class DonorApiController {
 	@DeleteMapping("{id}")
 	public Donor delete(@PathVariable Long id) {
 		Donor donor = donorRepo.findOne(id);
+		if(donor.getDonatedItems() != null) {
+			for (DonatedItem di : donor.getDonatedItems()) {
+				donatedItemRepo.delete(di.getId());
+			}
+		}
 		donorRepo.delete(id);
 		return donor;
 	}
