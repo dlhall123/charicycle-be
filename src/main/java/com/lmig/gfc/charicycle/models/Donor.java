@@ -50,7 +50,7 @@ public class Donor {
 		this.phoneNumber = phoneNumber;
 		this.email = email;
 	}
-
+ 
 	public Long getId() {
 		return id;
 	}
