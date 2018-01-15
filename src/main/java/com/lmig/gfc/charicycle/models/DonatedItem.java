@@ -23,7 +23,10 @@ public class DonatedItem {
 	@ManyToOne
 	private Donor donor;
 
-	private Long claimedCharityId;
+	// private Long claimedCharityId;
+
+	@ManyToOne
+	private Charity claimedByCharity;
 
 	public DonatedItem(Category category, String description, String itemImageUrl) {
 		this.category = category;
@@ -74,11 +77,19 @@ public class DonatedItem {
 		this.category = category;
 	}
 
-	public Long getClaimedCharityId() {
-		return claimedCharityId;
+	// public Long getClaimedCharityId() {
+	// return claimedCharityId;
+	// }
+	//
+	// public void setClaimedCharityId(Long claimedCharityId) {
+	// this.claimedCharityId = claimedCharityId;
+	// }
+
+	public Charity getClaimedByCharity() {
+		return claimedByCharity;
 	}
 
-	public void setClaimedCharityId(Long claimedCharityId) {
-		this.claimedCharityId = claimedCharityId;
+	public void setClaimedByCharity(Charity claimedByCharity) {
+		this.claimedByCharity = claimedByCharity;
 	}
 }

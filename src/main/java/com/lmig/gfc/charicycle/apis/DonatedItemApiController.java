@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.lmig.gfc.charicycle.models.DonatedItem;
 import com.lmig.gfc.charicycle.models.DonatedItemView;
+import com.lmig.gfc.charicycle.services.CharityRepository;
 import com.lmig.gfc.charicycle.services.DonatedItemRepository;
 import com.lmig.gfc.charicycle.services.DonorRepository;
 
@@ -26,6 +27,8 @@ public class DonatedItemApiController {
 	private DonatedItemRepository donateRepo;
 	@Autowired
 	private DonorRepository donorRepo;
+	@Autowired
+	private CharityRepository charityRepo;
 
 	@PostMapping("{id}")
 	public DonatedItem create(@PathVariable Long id, @RequestBody DonatedItem di) {
@@ -61,12 +64,21 @@ public class DonatedItemApiController {
 		return donateRepo.save(donatedItem);
 	}
 
-	@PutMapping("{donorId}/{id}")
-	public DonatedItem updateDonatedItem(@RequestBody DonatedItem donatedItem, @PathVariable Long id,
-			@PathVariable Long donorId) {
-		donatedItem.setId(id);
-		donatedItem.setDonor(donorRepo.findOne(donorId));
-		return donateRepo.save(donatedItem);
+	// a put mapping was needed to save the donor id back to the donated object and
+	// to update the claimedByCharity on the donated item
+	// Since the paths were identical, the if condition checks to see if the id send
+	// is a charity, if not, it assumes its a donor's id.
+	@PutMapping("{otherId}/{id}")
+	public DonatedItem update(@RequestBody DonatedItem donatedItem, @PathVariable Long id, @PathVariable Long otherId) {
+		if (charityRepo.findOne(otherId) != null) {
+			donatedItem.setId(id);
+			donatedItem.setClaimedByCharity(charityRepo.findOne(otherId));
+			return donateRepo.save(donatedItem);
+		} else {
+			donatedItem.setId(id);
+			donatedItem.setDonor(donorRepo.findOne(otherId));
+			return donateRepo.save(donatedItem);
+		}
 	}
 
 }
