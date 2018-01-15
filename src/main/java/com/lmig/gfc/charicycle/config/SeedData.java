@@ -13,6 +13,18 @@ public class SeedData {
 	
 	public SeedData(CategoryRepository categoryRepo, CharityRepository charityRepository, DonorRepository donorRepository ) {
 		categoryRepo.save(new Category("Bedding"));
+		categoryRepo.save(new Category("Bedding"));
+		categoryRepo.save(new Category("Bedding"));
+		categoryRepo.save(new Category("Bedding"));
+		categoryRepo.save(new Category("Bedding"));
+		categoryRepo.save(new Category("Bedding"));
+		categoryRepo.save(new Category("Bedding"));
+		categoryRepo.save(new Category("Bedding"));
+		categoryRepo.save(new Category("Bedding"));
+		categoryRepo.save(new Category("Bedding"));
+		categoryRepo.save(new Category("Bedding"));
+		categoryRepo.save(new Category("Bedding"));
+		categoryRepo.save(new Category("Bedding"));
 		categoryRepo.save(new Category("Books/Tapes/Videos"));
 		categoryRepo.save(new Category("Clothing"));
 		categoryRepo.save(new Category("Cookware"));
