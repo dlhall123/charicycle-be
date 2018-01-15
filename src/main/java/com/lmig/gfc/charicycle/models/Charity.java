@@ -46,10 +46,10 @@ public class Charity {
 	@Column(nullable = true)
 	private String zip;
 
-	@Column(nullable = true)
+	@Column(nullable = false)
 	private String emailAddress;
 	
-	@Column(length = 75, nullable = false)
+	@Column(length = 75)
 	private String phoneNumber;
 
 	@OneToMany(mappedBy = "charity") // One charity has many Needed Items
