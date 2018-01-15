@@ -9,6 +9,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 public class Charity {
 
@@ -40,16 +42,19 @@ public class Charity {
 	@OneToMany(mappedBy = "charity") // One charity has many Needed Items
 	private List<Item> neededItems;
 
+	@JsonIgnore
+	@OneToMany(mappedBy = "claimedByCharity")
+	private List<DonatedItem> claimedItems;
+
 	public Charity() {
 	};
 
-	public Charity(String organizationName, String taxId, String address,
-			 String contactName, String emailAddress) {
-			this.organizationName = organizationName;
-			this.taxId = taxId;
-			this.address = address;
-			this.contactName = contactName;
-			this.emailAddress = emailAddress;
+	public Charity(String organizationName, String taxId, String address, String contactName, String emailAddress) {
+		this.organizationName = organizationName;
+		this.taxId = taxId;
+		this.address = address;
+		this.contactName = contactName;
+		this.emailAddress = emailAddress;
 	}
 
 	public Long getId() {
@@ -122,6 +127,14 @@ public class Charity {
 
 	public void setNeededItems(List<Item> neededItems) {
 		this.neededItems = neededItems;
+	}
+
+	public List<DonatedItem> getClaimedItems() {
+		return claimedItems;
+	}
+
+	public void setClaimedItems(List<DonatedItem> claimedItems) {
+		this.claimedItems = claimedItems;
 	}
 
 }

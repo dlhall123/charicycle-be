@@ -29,7 +29,11 @@ public class DonatedItemView {
 		return donorView;
 	}
 
-	public Long getClaimedCharityId() {
-		return donatedItem.getClaimedCharityId();
+	// public Long getClaimedCharityId() {
+	// return donatedItem.getClaimedCharityId();
+	// }
+
+	public Charity getClaimedByCharity() {
+		return donatedItem.getClaimedByCharity();
 	}
 }
