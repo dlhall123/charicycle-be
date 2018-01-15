@@ -23,6 +23,8 @@ public class DonatedItem {
 	@ManyToOne
 	private Donor donor;
 
+	private Long claimedCharityId;
+
 	public DonatedItem(Category category, String description, String itemImageUrl) {
 		this.category = category;
 		this.description = description;
@@ -70,5 +72,13 @@ public class DonatedItem {
 
 	public void setCategory(Category category) {
 		this.category = category;
+	}
+
+	public Long getClaimedCharityId() {
+		return claimedCharityId;
+	}
+
+	public void setClaimedCharityId(Long claimedCharityId) {
+		this.claimedCharityId = claimedCharityId;
 	}
 }
