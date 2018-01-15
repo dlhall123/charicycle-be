@@ -6,7 +6,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
 @Entity
-public class Users {
+public abstract class Users {
 	@Id
 	@GeneratedValue
 	private Long id;
@@ -23,9 +23,9 @@ public class Users {
 	private String phoneNumber;
 	@Column(nullable = false)
 	private String email;
-	// @Column(nullable = false)
+	@Column(nullable = false)
 	private String userName;
-	// @Column(nullable = false)
+	@Column(nullable = false)
 	private String password;
 
 	public Long getId() {
