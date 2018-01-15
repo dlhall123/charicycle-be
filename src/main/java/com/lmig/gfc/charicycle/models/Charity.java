@@ -9,6 +9,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 public class Charity {
 
@@ -55,8 +57,13 @@ public class Charity {
 	@OneToMany(mappedBy = "charity") // One charity has many Needed Items
 	private List<Item> neededItems;
 
+	@JsonIgnore
+	@OneToMany(mappedBy = "claimedByCharity")
+	private List<DonatedItem> claimedItems;
+
 	public Charity() {
 	};
+
 
 
 	public Charity(String companyName, String taxId, String contactFirstName,
@@ -73,8 +80,6 @@ public class Charity {
 		this.zip = zip;
 		this.phoneNumber = phoneNumber;
 		this.emailAddress = emailAddress;
-		
-				
 	}
 
 
@@ -215,6 +220,14 @@ public class Charity {
 
 	public void setNeededItems(List<Item> neededItems) {
 		this.neededItems = neededItems;
+	}
+
+	public List<DonatedItem> getClaimedItems() {
+		return claimedItems;
+	}
+
+	public void setClaimedItems(List<DonatedItem> claimedItems) {
+		this.claimedItems = claimedItems;
 	}
 }
 
