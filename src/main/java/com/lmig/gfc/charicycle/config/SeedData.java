@@ -13,6 +13,18 @@ public class SeedData {
 	
 	public SeedData(CategoryRepository categoryRepo, CharityRepository charityRepository, DonorRepository donorRepository ) {
 		categoryRepo.save(new Category("Bedding"));
+		categoryRepo.save(new Category("Bedding"));
+		categoryRepo.save(new Category("Bedding"));
+		categoryRepo.save(new Category("Bedding"));
+		categoryRepo.save(new Category("Bedding"));
+		categoryRepo.save(new Category("Bedding"));
+		categoryRepo.save(new Category("Bedding"));
+		categoryRepo.save(new Category("Bedding"));
+		categoryRepo.save(new Category("Bedding"));
+		categoryRepo.save(new Category("Bedding"));
+		categoryRepo.save(new Category("Bedding"));
+		categoryRepo.save(new Category("Bedding"));
+		categoryRepo.save(new Category("Bedding"));
 		categoryRepo.save(new Category("Books/Tapes/Videos"));
 		categoryRepo.save(new Category("Clothing"));
 		categoryRepo.save(new Category("Cookware"));
@@ -22,13 +34,12 @@ public class SeedData {
 		categoryRepo.save(new Category("Sporting Goods"));
 		categoryRepo.save(new Category("Toys"));
 		
-	Charity charity = charityRepository.save(new Charity("Goodwill", "12-3456789",
-	"100 E. Main Street Carmel IN 46032", "John Doe", "johndoe@comcast.net"));
-
+	Charity charity = charityRepository.save(new Charity("Goodwill", "12-3456789", "Fred", "Smith", 
+	"100 E. Main",  "Carmel",  "IN", "46032", "(317)-555-5555", "johnsmith@comcast.net"));    
+	
 	Donor donor = donorRepository.save(new Donor("Lisa inc", "Lisa", "Forrest", "100 E. Main", "Carmel", "IN", "46032", "317-555-5555", "lisalisa@comcast.net"));
 		
-	
-			
+				
 			
 	}
 

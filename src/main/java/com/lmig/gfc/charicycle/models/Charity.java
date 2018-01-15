@@ -25,19 +25,34 @@ public class Charity {
 	private String password;
 
 	@Column(length = 75, nullable = false)
-	private String organizationName;
-
-	@Column(length = 75, nullable = true)
+	private String companyName;
+	
+	@Column(length = 30, nullable = false)
 	private String taxId;
+	
+	@Column(length = 30, nullable = false)
+	private String contactFirstName;
+	
+	@Column(length = 30, nullable = false)
+	private String contactLastName;
 
 	@Column(nullable = true)
-	private String address;
-
+	private String addressLine;
+	
 	@Column(nullable = true)
-	private String contactName;
+	private String city;
+	
+	@Column(nullable = true)
+	private String state;
+	
+	@Column(nullable = true)
+	private String zip;
 
 	@Column(nullable = true)
 	private String emailAddress;
+	
+	@Column(length = 75, nullable = false)
+	private String phoneNumber;
 
 	@OneToMany(mappedBy = "charity") // One charity has many Needed Items
 	private List<Item> neededItems;
@@ -49,81 +64,159 @@ public class Charity {
 	public Charity() {
 	};
 
-	public Charity(String organizationName, String taxId, String address, String contactName, String emailAddress) {
-		this.organizationName = organizationName;
-		this.taxId = taxId;
-		this.address = address;
-		this.contactName = contactName;
+
+
+	public Charity(String companyName, String taxId, String contactFirstName,
+			String contactLastName, String addressLine, String city, String state, String zip,
+			String phoneNumber, String emailAddress) {
+		
+		this.companyName = companyName;
+		this.taxId = taxId; 
+		this.contactFirstName = contactFirstName;
+		this.contactLastName = contactLastName;
+		this.addressLine = addressLine;
+		this.city = city;
+		this.state = state;
+		this.zip = zip;
+		this.phoneNumber = phoneNumber;
 		this.emailAddress = emailAddress;
 	}
+
 
 	public Long getId() {
 		return id;
 	}
 
+
 	public void setId(Long id) {
 		this.id = id;
 	}
+
 
 	public String getLongInId() {
 		return longInId;
 	}
 
+
 	public void setLongInId(String longInId) {
 		this.longInId = longInId;
 	}
+
 
 	public String getPassword() {
 		return password;
 	}
 
+
 	public void setPassword(String password) {
 		this.password = password;
 	}
 
-	public String getOrganizationName() {
-		return organizationName;
+
+	public String getCompanyName() {
+		return companyName;
 	}
 
-	public void setOrganizationName(String organizationName) {
-		this.organizationName = organizationName;
+
+	public void setCompanyName(String companyName) {
+		this.companyName = companyName;
 	}
+
 
 	public String getTaxId() {
 		return taxId;
 	}
 
+
 	public void setTaxId(String taxId) {
 		this.taxId = taxId;
 	}
 
-	public String getAddress() {
-		return address;
+
+	public String getContactFirstName() {
+		return contactFirstName;
 	}
 
-	public void setAddress(String address) {
-		this.address = address;
+
+	public void setContactFirstName(String contactFirstName) {
+		this.contactFirstName = contactFirstName;
 	}
 
-	public String getContactName() {
-		return contactName;
+
+	public String getContactLastName() {
+		return contactLastName;
 	}
 
-	public void setContactName(String contactName) {
-		this.contactName = contactName;
+
+	public void setContactLastName(String contactLastName) {
+		this.contactLastName = contactLastName;
 	}
+
+
+	public String getAddressLine() {
+		return addressLine;
+	}
+
+
+	public void setAddressLine(String addressLine) {
+		this.addressLine = addressLine;
+	}
+
+
+	public String getCity() {
+		return city;
+	}
+
+
+	public void setCity(String city) {
+		this.city = city;
+	}
+
+
+	public String getState() {
+		return state;
+	}
+
+
+	public void setState(String state) {
+		this.state = state;
+	}
+
+
+	public String getZip() {
+		return zip;
+	}
+
+
+	public void setZip(String zip) {
+		this.zip = zip;
+	}
+
 
 	public String getEmailAddress() {
 		return emailAddress;
 	}
 
+
 	public void setEmailAddress(String emailAddress) {
 		this.emailAddress = emailAddress;
 	}
 
+
+	public String getPhoneNumber() {
+		return phoneNumber;
+	}
+
+
+	public void setPhoneNumber(String phoneNumber) {
+		this.phoneNumber = phoneNumber;
+	}
+
+
 	public List<Item> getNeededItems() {
 		return neededItems;
 	}
+
 
 	public void setNeededItems(List<Item> neededItems) {
 		this.neededItems = neededItems;
@@ -136,5 +229,6 @@ public class Charity {
 	public void setClaimedItems(List<DonatedItem> claimedItems) {
 		this.claimedItems = claimedItems;
 	}
-
 }
+
+	
