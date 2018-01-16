@@ -29,7 +29,6 @@ public class Charity extends Users {
 			String addressLine, String city, String state, String zip, String emailAddress, String phoneNumber,
 			String userName, String password) {
 
-
 		super.setCompanyName(organizationName);
 		super.setContactFirstName(contactFirstName);
 		super.setContactLastName(contactLastName);
@@ -44,22 +43,19 @@ public class Charity extends Users {
 		super.setPassword(password);
 
 	}
+
 	public void setTaxId(String taxId) {
 		this.taxId = taxId;
 	}
-
 
 	public String getTaxId() {
 		return taxId;
 
 	}
 
-
-
 	public List<Item> getNeededItems() {
 		return neededItems;
 	}
-
 
 	public void setNeededItems(List<Item> neededItems) {
 		this.neededItems = neededItems;
@@ -73,5 +69,3 @@ public class Charity extends Users {
 		this.claimedItems = claimedItems;
 	}
 }
-
-	

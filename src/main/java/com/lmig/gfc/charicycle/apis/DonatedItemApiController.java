@@ -1,5 +1,6 @@
 package com.lmig.gfc.charicycle.apis;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,8 +38,13 @@ public class DonatedItemApiController {
 	}
 
 	@GetMapping("")
-	public List<DonatedItem> getAll() {
-		return donateRepo.findAll();
+	public List<DonatedItemView> getAll() {
+		List<DonatedItem> donatedItems = donateRepo.findAll();
+		ArrayList<DonatedItemView> donatedItemViews = new ArrayList<DonatedItemView>();
+		for (DonatedItem item : donatedItems) {
+			donatedItemViews.add(new DonatedItemView(item));
+		}
+		return donatedItemViews;
 	}
 
 	@DeleteMapping("{id}")
