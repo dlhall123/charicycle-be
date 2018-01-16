@@ -1,5 +1,6 @@
 package com.lmig.gfc.charicycle.apis;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.lmig.gfc.charicycle.models.Item;
+import com.lmig.gfc.charicycle.models.NeededItemView;
 import com.lmig.gfc.charicycle.services.CharityRepository;
 import com.lmig.gfc.charicycle.services.ItemRepository;
 
@@ -33,8 +35,13 @@ public class NeededItemApiController {
 	}
 
 	@GetMapping("")
-	public List<Item> getAll() {
-		return itemRepo.findAll();
+	public List<NeededItemView> getAll() {
+		List<Item> neededItems = itemRepo.findAll();
+		ArrayList<NeededItemView> neededItemViews = new ArrayList<NeededItemView>();
+		for (Item item : neededItems) {
+			neededItemViews.add(new NeededItemView(item));
+		}
+		return neededItemViews;
 	}
 
 	@DeleteMapping("{id}")
