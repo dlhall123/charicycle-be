@@ -16,8 +16,11 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.lmig.gfc.charicycle.models.Charity;
+import com.lmig.gfc.charicycle.models.CharityView;
+import com.lmig.gfc.charicycle.models.DonatedItem;
 import com.lmig.gfc.charicycle.models.Item;
 import com.lmig.gfc.charicycle.services.CharityRepository;
+import com.lmig.gfc.charicycle.services.DonatedItemRepository;
 import com.lmig.gfc.charicycle.services.ItemRepository;
 
 @RestController
@@ -30,9 +33,13 @@ public class CharityApiController {
 
 	private ItemRepository itemRepository;
 
-	public CharityApiController(CharityRepository charityRepository, ItemRepository itemRepository) {
+	private DonatedItemRepository donatedItemRepository;
+
+	public CharityApiController(CharityRepository charityRepository, ItemRepository itemRepository,
+			DonatedItemRepository donatedItemRepository) {
 		this.charityRepository = charityRepository;
 		this.itemRepository = itemRepository;
+		this.donatedItemRepository = donatedItemRepository;
 	}
 
 	@PostMapping("")
@@ -47,8 +54,16 @@ public class CharityApiController {
 	}
 
 	@GetMapping("{id}")
-	public Charity getOne(@PathVariable Long id) {
-		return charityRepository.findOne(id);
+	public CharityView getOne(@PathVariable Long id) {
+		Charity charity = charityRepository.findOne(id);
+
+		if (charity != null) {
+			CharityView charityView = new CharityView(charity);
+			return charityView;
+		}
+		return null;
+
+		// return charityRepository.findOne(id);
 	}
 
 	@PutMapping("{id}")
@@ -64,6 +79,11 @@ public class CharityApiController {
 		if (charity.getNeededItems() != null) {
 			for (Item ni : charity.getNeededItems()) {
 				itemRepository.delete(ni.getId());
+			}
+		}
+		if (charity.getClaimedItems() != null) {
+			for (DonatedItem ci : charity.getClaimedItems()) {
+				donatedItemRepository.delete(ci.getId());
 			}
 		}
 		charityRepository.delete(id);

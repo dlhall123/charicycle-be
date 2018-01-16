@@ -18,7 +18,7 @@ public class NeededItemSeedData {
 		catRepo.save(category);
 
 		Charity charity = charityRepo.save(new Charity("Salvation Army", "Fred", "Smith", "12-3456789", "100 E. Main",
-				"Carmel", "IN", "46032", "(317)-555-5555", "johnsmith@comcast.net", "salvation", "password"));
+				"Carmel", "IN", "46032", "johnsmith@comcast.net", "(317)-555-5555", "salvation", "password", true));
 
 		Item itemOne = itemRepo.save(new Item(category, "My charity needs a fridge"));
 		itemOne.setCharity(charity);

@@ -15,6 +15,8 @@ public class Charity extends Users {
 	@Column(length = 75, nullable = true)
 	private String taxId;
 
+	private boolean isConfirmed;
+
 	@OneToMany(mappedBy = "charity") // One charity has many Needed Items
 	private List<Item> neededItems;
 
@@ -27,7 +29,7 @@ public class Charity extends Users {
 
 	public Charity(String organizationName, String contactFirstName, String contactLastName, String taxId,
 			String addressLine, String city, String state, String zip, String emailAddress, String phoneNumber,
-			String userName, String password) {
+			String userName, String password, boolean isConfirmed) {
 
 		super.setCompanyName(organizationName);
 		super.setContactFirstName(contactFirstName);
@@ -41,6 +43,7 @@ public class Charity extends Users {
 		super.setPhoneNumber(phoneNumber);
 		super.setUserName(userName);
 		super.setPassword(password);
+		this.setConfirmed(isConfirmed);
 
 	}
 
@@ -67,5 +70,13 @@ public class Charity extends Users {
 
 	public void setClaimedItems(List<DonatedItem> claimedItems) {
 		this.claimedItems = claimedItems;
+	}
+
+	public boolean isConfirmed() {
+		return isConfirmed;
+	}
+
+	public void setConfirmed(boolean isConfirmed) {
+		this.isConfirmed = isConfirmed;
 	}
 }
