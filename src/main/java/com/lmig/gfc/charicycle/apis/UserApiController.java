@@ -26,9 +26,9 @@ public class UserApiController {
 	@GetMapping("")
 	public User getUser(Authentication auth) {
 		User user = (User) auth.getPrincipal();
-		String userName = user.getUserName();
+		String userName = user.getUsername();
 
-		return userRepository.findByUserName(userName);
+		return userRepository.findByUsername(userName);
 	}
 
 	@PutMapping("")

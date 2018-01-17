@@ -17,7 +17,7 @@ public class CharicycleUserDetailsService implements UserDetailsService {
 
 	@Override
 	public UserDetails loadUserByUsername(String userName) throws UsernameNotFoundException {
-		User user = userRepository.findByUserName(userName);
+		User user = userRepository.findByUsername(userName);
 		if (user == null) {
 			throw new UsernameNotFoundException(userName);
 		}

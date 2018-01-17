@@ -26,7 +26,7 @@ public class Donor extends User {
 		super.setZip(zip);
 		super.setPhoneNumber(phoneNumber);
 		super.setEmail(email);
-		super.setUserName(userName);
+		super.setUsername(userName);
 		super.setPassword(password);
 	}
 

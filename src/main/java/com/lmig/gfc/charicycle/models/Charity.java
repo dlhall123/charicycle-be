@@ -42,7 +42,7 @@ public class Charity extends User {
 		super.setZip(zip);
 		super.setEmail(emailAddress);
 		super.setPhoneNumber(phoneNumber);
-		super.setUserName(userName);
+		super.setUsername(userName);
 		super.setPassword(password);
 		this.setConfirmed(isConfirmed);
 

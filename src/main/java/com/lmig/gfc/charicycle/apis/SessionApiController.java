@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.lmig.gfc.charicycle.models.User;
+import com.lmig.gfc.charicycle.services.UserRepository;
 
 @CrossOrigin(origins = "*")
 @RestController
@@ -27,7 +28,8 @@ public class SessionApiController {
 	private UserDetailsService userDetails;
 	private AuthenticationManager authenticator;
 
-	public SessionApiController(UserDetailsService userDetails, AuthenticationManager authenticator) {
+	public SessionApiController(UserDetailsService userDetails, AuthenticationManager authenticator,
+			UserRepository userRepo) {
 		this.userDetails = userDetails;
 		this.authenticator = authenticator;
 	}
