@@ -10,7 +10,8 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 
-public class Charity extends Users {
+public class Charity extends User {
+	private static final long serialVersionUID = 1L;
 
 	@Column(length = 75, nullable = true)
 	private String taxId;

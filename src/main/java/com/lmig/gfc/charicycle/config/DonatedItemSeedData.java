@@ -29,7 +29,7 @@ public class DonatedItemSeedData {
 		donatedItemRepo.save(donatedItemTwo);
 
 		Donor donor2 = donorRepo.save(new Donor(null, "Sally", "Sampson", "655 Mason Street", "Greenwood", "IN",
-				"46143", "555-555-5555", "email@email.com", "joe", "password"));
+				"46143", "555-555-5555", "email@email.com", "blow", "password"));
 		DonatedItem donatedItemThree = donatedItemRepo.save(new DonatedItem(category, "Baby Crib", null));
 		donatedItemThree.setDonor(donor2);
 		donatedItemRepo.save(donatedItemThree);
