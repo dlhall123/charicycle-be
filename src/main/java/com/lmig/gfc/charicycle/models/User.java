@@ -36,6 +36,7 @@ public abstract class User implements UserDetails {
 	private String username;
 	@Column(nullable = false)
 	private String password;
+	private boolean isAdmin;
 
 	public Long getId() {
 		return id;
@@ -157,6 +158,14 @@ public abstract class User implements UserDetails {
 	@Override
 	public boolean isEnabled() {
 		return true;
+	}
+
+	public boolean isAdmin() {
+		return isAdmin;
+	}
+
+	public void setAdmin(boolean isAdmin) {
+		this.isAdmin = isAdmin;
 	}
 
 }

@@ -40,7 +40,7 @@ public class SeedData {
 		// Donated Item Seed Data
 		Category category = categoryRepo.findByName("Bedding").get(0);
 		Donor donor2 = donorRepository.save(new Donor(null, "Joe", "Smith", "684 Hwy 74", "Indianapolis", "IN", "46220",
-				"555-555-5555", "email@email.com", "joe", "password"));
+				"555-555-5555", "email@email.com", "joe", encoder.encode("password")));
 		DonatedItem donatedItem = donatedItemRepo.save(new DonatedItem(category, "3 cute Penguins",
 				"https://s3-us-west-2.amazonaws.com/charicycle/Penguins.jpg"));
 		donatedItem.setDonor(donor);
@@ -51,20 +51,29 @@ public class SeedData {
 		donatedItemRepo.save(donatedItemTwo);
 
 		Donor donor3 = donorRepository.save(new Donor(null, "Sally", "Sampson", "655 Mason Street", "Greenwood", "IN",
-				"46143", "555-555-5555", "email@email.com", "blow", "password"));
+				"46143", "555-555-5555", "email@email.com", "blow", encoder.encode("password")));
 		DonatedItem donatedItemThree = donatedItemRepo.save(new DonatedItem(category, "Baby Crib", null));
 		donatedItemThree.setDonor(donor3);
 		donatedItemRepo.save(donatedItemThree);
 
 		// Needed Item Seed Data
 
-		Charity charity2 = charityRepository
-				.save(new Charity("Salvation Army", "Fred", "Smith", "12-3456789", "100 E. Main", "Carmel", "IN",
-						"46032", "johnsmith@comcast.net", "(317)-555-5555", "salvation", "password", true));
+		Charity charity2 = charityRepository.save(
+				new Charity("Salvation Army", "Fred", "Smith", "12-3456789", "100 E. Main", "Carmel", "IN", "46032",
+						"johnsmith@comcast.net", "(317)-555-5555", "salvation", encoder.encode("password"), true));
 
 		Item itemOne = itemRepo.save(new Item(category, "My charity needs a fridge"));
 		itemOne.setCharity(charity2);
 		itemRepo.save(itemOne);
+
+		Donor admin = new Donor();
+		admin.setAdmin(true);
+		admin.setUsername("admin");
+		admin.setPassword(encoder.encode("password"));
+		admin.setContactFirstName("Admin");
+		admin.setContactLastName("Admin");
+		admin.setEmail("admin@admin.com");
+		donorRepository.save(admin);
 
 	}
 
