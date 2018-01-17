@@ -23,7 +23,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 	protected void configure(HttpSecurity http) throws Exception {
 		http.authorizeRequests()
 				// allow access without auth to the following routes
-				.antMatchers(HttpMethod.GET, "/img/**", "/css/**", "/js/**", "/api/donatedItems/**").permitAll()
+				.antMatchers(HttpMethod.GET, "/img/**", "/css/**", "/js/**").permitAll()
 				.antMatchers(HttpMethod.POST, "/api/users/new").permitAll()
 				.antMatchers(HttpMethod.PUT, "/api/session/mine").permitAll().antMatchers(HttpMethod.OPTIONS)
 				.permitAll().anyRequest().authenticated().and().csrf().disable();
