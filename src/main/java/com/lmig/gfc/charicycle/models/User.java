@@ -13,7 +13,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 @Entity
 @Table(name = "users")
-public class User implements UserDetails {
+public abstract class User implements UserDetails {
 	private static final long serialVersionUID = 1L;
 
 	@Id
@@ -36,9 +36,6 @@ public class User implements UserDetails {
 	private String username;
 	@Column(nullable = false)
 	private String password;
-
-	public User() {
-	}
 
 	public Long getId() {
 		return id;
