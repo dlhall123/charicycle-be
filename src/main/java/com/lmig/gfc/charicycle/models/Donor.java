@@ -6,7 +6,8 @@ import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 
 @Entity
-public class Donor extends Users {
+public class Donor extends User {
+	private static final long serialVersionUID = 1L;
 
 	@OneToMany(mappedBy = "donor") // One donor has many Donated Items
 	private List<DonatedItem> donatedItems;
@@ -25,7 +26,7 @@ public class Donor extends Users {
 		super.setZip(zip);
 		super.setPhoneNumber(phoneNumber);
 		super.setEmail(email);
-		super.setUserName(userName);
+		super.setUsername(userName);
 		super.setPassword(password);
 	}
 

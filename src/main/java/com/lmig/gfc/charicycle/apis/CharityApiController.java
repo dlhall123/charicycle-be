@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -35,16 +36,20 @@ public class CharityApiController {
 
 	private DonatedItemRepository donatedItemRepository;
 
+	private PasswordEncoder encoder;
+
 	public CharityApiController(CharityRepository charityRepository, ItemRepository itemRepository,
-			DonatedItemRepository donatedItemRepository) {
+			DonatedItemRepository donatedItemRepository, PasswordEncoder encoder) {
 		this.charityRepository = charityRepository;
 		this.itemRepository = itemRepository;
 		this.donatedItemRepository = donatedItemRepository;
+		this.encoder = encoder;
 	}
 
 	@PostMapping("")
 	@ResponseStatus(code = HttpStatus.CREATED)
 	public Charity create(@RequestBody Charity charity) {
+		charity.setPassword(encoder.encode(charity.getPassword()));
 		return charityRepository.save(charity);
 	}
 

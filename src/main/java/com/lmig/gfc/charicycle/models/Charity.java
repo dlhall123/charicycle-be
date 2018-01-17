@@ -10,7 +10,8 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 
-public class Charity extends Users {
+public class Charity extends User {
+	private static final long serialVersionUID = 1L;
 
 	@Column(length = 75, nullable = true)
 	private String taxId;
@@ -41,7 +42,7 @@ public class Charity extends Users {
 		super.setZip(zip);
 		super.setEmail(emailAddress);
 		super.setPhoneNumber(phoneNumber);
-		super.setUserName(userName);
+		super.setUsername(userName);
 		super.setPassword(password);
 		this.setConfirmed(isConfirmed);
 

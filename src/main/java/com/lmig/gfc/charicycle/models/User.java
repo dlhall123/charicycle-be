@@ -1,12 +1,21 @@
 package com.lmig.gfc.charicycle.models;
 
+import java.util.Collection;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.Table;
+
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 
 @Entity
-public abstract class Users {
+@Table(name = "users")
+public abstract class User implements UserDetails {
+	private static final long serialVersionUID = 1L;
+
 	@Id
 	@GeneratedValue
 	private Long id;
@@ -23,10 +32,11 @@ public abstract class Users {
 	private String phoneNumber;
 	@Column(nullable = false)
 	private String email;
-	@Column(nullable = false)
-	private String userName;
+	@Column(nullable = false, unique = true)
+	private String username;
 	@Column(nullable = false)
 	private String password;
+	private boolean isAdmin;
 
 	public Long getId() {
 		return id;
@@ -108,12 +118,8 @@ public abstract class Users {
 		this.email = email;
 	}
 
-	public String getUserName() {
-		return userName;
-	}
-
-	public void setUserName(String userName) {
-		this.userName = userName;
+	public void setUsername(String username) {
+		this.username = username;
 	}
 
 	public String getPassword() {
@@ -122,6 +128,44 @@ public abstract class Users {
 
 	public void setPassword(String password) {
 		this.password = password;
+	}
+
+	@Override
+	public Collection<? extends GrantedAuthority> getAuthorities() {
+		return null;
+	}
+
+	@Override
+	public String getUsername() {
+		return username;
+	}
+
+	@Override
+	public boolean isAccountNonExpired() {
+		return true;
+	}
+
+	@Override
+	public boolean isAccountNonLocked() {
+		return true;
+	}
+
+	@Override
+	public boolean isCredentialsNonExpired() {
+		return true;
+	}
+
+	@Override
+	public boolean isEnabled() {
+		return true;
+	}
+
+	public boolean isAdmin() {
+		return isAdmin;
+	}
+
+	public void setAdmin(boolean isAdmin) {
+		this.isAdmin = isAdmin;
 	}
 
 }
