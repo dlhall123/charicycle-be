@@ -38,4 +38,9 @@ public class Donor extends User {
 		this.donatedItems = donatedItems;
 	}
 
+	@Override
+	public boolean isAccountNonLocked() {
+		return true;
+	}
+
 }

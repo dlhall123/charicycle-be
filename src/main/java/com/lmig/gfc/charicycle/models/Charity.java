@@ -79,4 +79,9 @@ public class Charity extends User {
 	public void setConfirmed(boolean isConfirmed) {
 		this.isConfirmed = isConfirmed;
 	}
+
+	@Override
+	public boolean isAccountNonLocked() {
+		return isConfirmed;
+	}
 }
