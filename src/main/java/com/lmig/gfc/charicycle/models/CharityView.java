@@ -18,6 +18,10 @@ public class CharityView {
 		return charity.getCompanyName();
 	}
 
+	public String getTaxId() {
+		return charity.getTaxId();
+	}
+
 	public String getContactFirstName() {
 		return charity.getContactFirstName();
 	}

@@ -34,7 +34,7 @@ public class SeedData {
 				"46032", "317-555-5555", "lisalisa@comcast.net", "lisa", encoder.encode("password")));
 
 		Charity charity = charityRepository.save(
-				new Charity("Goodwill", "Fred", "Smith", "12-3456789", "100 E. Main Street", "Carmel", "IN", "46032",
+				new Charity("Goodwill", "Fred", "Smith", "35-1483868", "100 E. Main Street", "Carmel", "IN", "46032",
 						"johndoe@comcast.net", "(317)-555-8888", "goodwill", encoder.encode("password"), true));
 
 		// Donated Item Seed Data
