@@ -20,7 +20,9 @@ public class SeedData {
 	public SeedData(CategoryRepository categoryRepo, CharityRepository charityRepository,
 			DonorRepository donorRepository, DonatedItemRepository donatedItemRepo, ItemRepository itemRepo,
 			PasswordEncoder encoder) {
+
 		// Categories
+
 		categoryRepo.save(new Category("Bedding"));
 		categoryRepo.save(new Category("Books/Tapes/Videos"));
 		categoryRepo.save(new Category("Clothing"));
@@ -42,6 +44,7 @@ public class SeedData {
 				"46143", "555-555-5555", "email@email.com", "sally", encoder.encode("password")));
 
 		// Donated Items
+
 		Category category = categoryRepo.findByName("Bedding").get(0);
 
 		DonatedItem donatedItem = donatedItemRepo.save(new DonatedItem(category, "3 cute Penguins",
@@ -76,6 +79,7 @@ public class SeedData {
 				"https://images-na.ssl-images-amazon.com/images/I/71wgBFkcI0L._SL1500_.jpg"));
 		donatedItemSix.setDonor(donor);
 		donatedItemRepo.save(donatedItemSix);
+
 		// Charities
 
 		Charity charity = charityRepository.save(new Charity("Goodwill", "Fred", "Smith", "12-3456789",
