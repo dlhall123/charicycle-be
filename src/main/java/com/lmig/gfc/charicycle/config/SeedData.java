@@ -36,14 +36,14 @@ public class SeedData {
 
 		// Donors
 
-		Donor donor = donorRepository.save(new Donor("Lisa inc", "Lisa", "Forrest", "100 E. Main", "Carmel", "IN",
-				"46032", "317-555-5555", "lisalisa@comcast.net", "lisa", encoder.encode("password")));
-		Donor donor2 = donorRepository.save(new Donor(null, "Joe", "Smith", "684 Hwy 74", "Cicero", "IN", "46034",
+		Donor donor = donorRepository.save(new Donor("Lisa inc", "Lisa", "Forrest", "17435 Carey Rd", "Westfield", "IN",
+				"46074", "317-555-5555", "lisalisa@comcast.net", "lisa", encoder.encode("password")));
+		Donor donor2 = donorRepository.save(new Donor(null, "Joe", "Smith", "110 S Peru St", "Cicero", "IN", "46034",
 				"555-555-5555", "email@email.com", "joe", encoder.encode("password")));
-		Donor donor3 = donorRepository.save(new Donor(null, "Sally", "Sampson", "655 Mason Street", "Greenwood", "IN",
-				"46143", "555-555-5555", "email@email.com", "sally", encoder.encode("password")));
+		Donor donor3 = donorRepository
+				.save(new Donor(null, "Sally", "Sampson", "1050 Century Drive", "Lake Buena Vista", "FL", "32830",
+						"555-555-5555", "email@email.com", "sally", encoder.encode("password")));
 
-    
 		// Donated Items
 
 		Category category = categoryRepo.findByName("Bedding").get(0);
@@ -86,9 +86,17 @@ public class SeedData {
 		Charity charity = charityRepository.save(new Charity("Goodwill", "Fred", "Smith", "12-3456789",
 				"100 E. Main Street", "Noblesville", "IN", "46062", "johndoe@comcast.net", "(317)-555-8888", "goodwill",
 				encoder.encode("password"), true));
-		Charity charity2 = charityRepository.save(
-				new Charity("Salvation Army", "Fred", "Smith", "35-1483868", "100 E. Main", "Carmel", "IN", "46032",
-						"johnsmith@comcast.net", "(317)-555-5555", "salvation", encoder.encode("password"), true));
+		Charity charity2 = charityRepository.save(new Charity("Gleaners Food Bank", "Fred", "Smith", "35-1483868",
+				"3737 Waldemere Ave", "Indianapolis", "IN", "46241", "johnsmith@comcast.net", "(317)-555-5555",
+				"salvation", encoder.encode("password"), true));
+
+		Charity charity3 = charityRepository.save(new Charity("Make-a-wish Foundation", "Joe", "Smith", "86-0481941",
+				"7330 Woodland Dr", "Indianapolis", "IN", "46278", "johnsmith@comcast.net", "(317)-555-5555", "maw",
+				encoder.encode("password"), false));
+
+		Charity charity4 = charityRepository.save(
+				new Charity("Give Kids The World", "David", "Smith", "59-2654440", "210 S Bass Rd", "Kissimmee", "FL",
+						"34746", "johnsmith@comcast.net", "(317)-555-5555", "gktw", encoder.encode("password"), true));
 
 		// Needed Items
 
