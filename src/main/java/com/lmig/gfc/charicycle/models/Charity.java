@@ -9,7 +9,6 @@ import javax.persistence.OneToMany;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
-
 public class Charity extends User {
 	private static final long serialVersionUID = 1L;
 

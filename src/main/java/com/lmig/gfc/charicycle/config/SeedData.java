@@ -43,6 +43,7 @@ public class SeedData {
 		Donor donor3 = donorRepository.save(new Donor(null, "Sally", "Sampson", "655 Mason Street", "Greenwood", "IN",
 				"46143", "555-555-5555", "email@email.com", "sally", encoder.encode("password")));
 
+    
 		// Donated Items
 
 		Category category = categoryRepo.findByName("Bedding").get(0);
@@ -86,7 +87,7 @@ public class SeedData {
 				"100 E. Main Street", "Noblesville", "IN", "46062", "johndoe@comcast.net", "(317)-555-8888", "goodwill",
 				encoder.encode("password"), true));
 		Charity charity2 = charityRepository.save(
-				new Charity("Salvation Army", "Fred", "Smith", "12-3456789", "100 E. Main", "Carmel", "IN", "46032",
+				new Charity("Salvation Army", "Fred", "Smith", "35-1483868", "100 E. Main", "Carmel", "IN", "46032",
 						"johnsmith@comcast.net", "(317)-555-5555", "salvation", encoder.encode("password"), true));
 
 		// Needed Items
