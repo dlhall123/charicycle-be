@@ -55,6 +55,7 @@ public class CategoryApiController {
 
 	}
 
+	@CrossOrigin(origins = "http://localhost:4200")
 	@DeleteMapping("{id}")
 	public Category delete(@PathVariable Long id) {
 		Category category = categoryRepo.findOne(id);
