@@ -18,6 +18,7 @@ import com.lmig.gfc.charicycle.models.Category;
 import com.lmig.gfc.charicycle.services.CategoryRepository;
 
 @RestController
+@CrossOrigin("*")
 @RequestMapping("/api/category")
 public class CategoryApiController {
 	private CategoryRepository categoryRepo;
@@ -26,28 +27,24 @@ public class CategoryApiController {
 		this.categoryRepo = categoryRepo;
 	}
 
-	@CrossOrigin(origins = "http://localhost:4200")
 	@GetMapping("")
 	public List<Category> getAll() {
 
 		return categoryRepo.findAll();
 	}
 
-	@CrossOrigin(origins = "http://localhost:4200")
 	@PostMapping("")
 	@ResponseStatus(code = HttpStatus.CREATED)
 	public Category create(@RequestBody Category category) {
 		return categoryRepo.save(category);
 	}
 
-	@CrossOrigin(origins = "http://localhost:4200")
 	@GetMapping("{id}")
 	public Category getOne(@PathVariable Long id) {
 
 		return categoryRepo.findOne(id);
 	}
 
-	@CrossOrigin(origins = "http://localhost:4200")
 	@PutMapping("{id}")
 	public Category update(@RequestBody Category category, @PathVariable Long id) {
 		category.setId(id);
@@ -55,7 +52,6 @@ public class CategoryApiController {
 
 	}
 
-	@CrossOrigin(origins = "http://localhost:4200")
 	@DeleteMapping("{id}")
 	public Category delete(@PathVariable Long id) {
 		Category category = categoryRepo.findOne(id);

@@ -21,6 +21,7 @@ import com.lmig.gfc.charicycle.services.DonatedItemRepository;
 import com.lmig.gfc.charicycle.services.DonorRepository;
 
 @RestController
+@CrossOrigin(origins = "*")
 @RequestMapping("/api/donor")
 public class DonorApiController {
 
@@ -36,7 +37,6 @@ public class DonorApiController {
 		this.encoder = encoder;
 	}
 
-	@CrossOrigin(origins = "http://localhost:4200")
 	@PostMapping("")
 	@ResponseStatus(code = HttpStatus.CREATED)
 	public Donor create(@RequestBody Donor donor) {
@@ -45,13 +45,11 @@ public class DonorApiController {
 
 	}
 
-	@CrossOrigin(origins = "http://localhost:4200")
 	@GetMapping("{id}")
 	public Donor getOne(@PathVariable Long id) {
 		return donorRepo.findOne(id);
 	}
 
-	@CrossOrigin(origins = "http://localhost:4200")
 	@PutMapping("{id}")
 	public Donor update(@RequestBody Donor donor, @PathVariable Long id) {
 		donor.setId(id);
@@ -59,7 +57,6 @@ public class DonorApiController {
 
 	}
 
-	@CrossOrigin(origins = "http://localhost:4200")
 	@DeleteMapping("{id}")
 	public Donor delete(@PathVariable Long id) {
 		Donor donor = donorRepo.findOne(id);
@@ -72,7 +69,6 @@ public class DonorApiController {
 		return donor;
 	}
 
-	@CrossOrigin(origins = "http://localhost:4200")
 	@GetMapping("")
 	public List<Donor> getDonorRepository() {
 		return donorRepo.findAll();
