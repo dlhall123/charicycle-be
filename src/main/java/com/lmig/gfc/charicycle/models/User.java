@@ -13,7 +13,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 @Entity
 @Table(name = "users")
-public abstract class User implements UserDetails {
+public class User implements UserDetails {
 	private static final long serialVersionUID = 1L;
 
 	@Id
@@ -161,6 +161,11 @@ public abstract class User implements UserDetails {
 
 	public void setAdmin(boolean isAdmin) {
 		this.isAdmin = isAdmin;
+	}
+
+	@Override
+	public boolean isAccountNonLocked() {
+		return true;
 	}
 
 }

@@ -8,18 +8,20 @@ import com.lmig.gfc.charicycle.models.Charity;
 import com.lmig.gfc.charicycle.models.DonatedItem;
 import com.lmig.gfc.charicycle.models.Donor;
 import com.lmig.gfc.charicycle.models.Item;
+import com.lmig.gfc.charicycle.models.User;
 import com.lmig.gfc.charicycle.services.CategoryRepository;
 import com.lmig.gfc.charicycle.services.CharityRepository;
 import com.lmig.gfc.charicycle.services.DonatedItemRepository;
 import com.lmig.gfc.charicycle.services.DonorRepository;
 import com.lmig.gfc.charicycle.services.ItemRepository;
+import com.lmig.gfc.charicycle.services.UserRepository;
 
 @Configuration
 public class SeedData {
 
 	public SeedData(CategoryRepository categoryRepo, CharityRepository charityRepository,
 			DonorRepository donorRepository, DonatedItemRepository donatedItemRepo, ItemRepository itemRepo,
-			PasswordEncoder encoder) {
+			PasswordEncoder encoder, UserRepository userRepo) {
 
 		// Categories
 
@@ -104,14 +106,14 @@ public class SeedData {
 		itemOne.setCharity(charity2);
 		itemRepo.save(itemOne);
 
-		Donor admin = new Donor();
+		User admin = new User();
 		admin.setAdmin(true);
 		admin.setUsername("admin");
 		admin.setPassword(encoder.encode("password"));
 		admin.setContactFirstName("Admin");
 		admin.setContactLastName("Admin");
 		admin.setEmail("admin@admin.com");
-		donorRepository.save(admin);
+		userRepo.save(admin);
 
 	}
 
