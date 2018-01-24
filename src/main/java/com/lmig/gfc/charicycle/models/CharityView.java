@@ -58,6 +58,18 @@ public class CharityView {
 		return charity.getNeededItems();
 	}
 
+	public String getUsername() {
+		return charity.getUsername();
+	}
+
+	public String getPassword() {
+		return charity.getPassword();
+	}
+
+	public boolean isConfirmed() {
+		return charity.isConfirmed();
+	}
+
 	public List<DonatedItemView> getClaimedItems() {
 		List<DonatedItemView> div = new ArrayList<DonatedItemView>();
 		List<DonatedItem> claimedItems = charity.getClaimedItems();

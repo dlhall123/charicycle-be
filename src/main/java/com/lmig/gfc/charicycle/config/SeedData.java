@@ -50,11 +50,6 @@ public class SeedData {
 
 		Category category = categoryRepo.findByName("Bedding").get(0);
 
-		DonatedItem donatedItem = donatedItemRepo.save(new DonatedItem(category, "3 cute Penguins",
-				"https://s3-us-west-2.amazonaws.com/charicycle/Penguins.jpg"));
-		donatedItem.setDonor(donor);
-		donatedItemRepo.save(donatedItem);
-
 		DonatedItem donatedItemTwo = donatedItemRepo.save(new DonatedItem(category, "Comfy Couch",
 				"https://images2.roomstogo.com/is/image/roomstogo/lr_sof_10111413_lilithpond~Lilith-Pond-Taupe-Sofa.jpeg?$PDP_Primary_936x650$"));
 		donatedItemTwo.setDonor(donor);
