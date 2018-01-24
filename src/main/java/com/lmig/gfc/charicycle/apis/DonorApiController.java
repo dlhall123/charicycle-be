@@ -53,6 +53,7 @@ public class DonorApiController {
 	@PutMapping("{id}")
 	public Donor update(@RequestBody Donor donor, @PathVariable Long id) {
 		donor.setId(id);
+		donor.setPassword(encoder.encode(donor.getPassword()));
 		return donorRepo.save(donor);
 
 	}
