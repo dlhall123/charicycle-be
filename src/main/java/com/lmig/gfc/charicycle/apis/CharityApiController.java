@@ -74,7 +74,6 @@ public class CharityApiController {
 	@PutMapping("{id}")
 	public Charity update(@RequestBody Charity charity, @PathVariable Long id) {
 		charity.setId(id);
-		charity.setPassword(encoder.encode(charity.getPassword()));
 		return charityRepository.save(charity);
 
 	}
